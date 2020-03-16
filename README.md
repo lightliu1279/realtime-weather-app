@@ -1,5 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-reference: https://ithelp.ithome.com.tw/users/20103315/ironman/2668
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).<br />
+reference: https://ithelp.ithome.com.tw/users/20103315/ironman/2668 .
 
 ## Available Scripts
 
