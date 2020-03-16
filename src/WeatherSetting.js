@@ -94,7 +94,6 @@ const WeatherSetting = ({ setCurrentPage, cityName, setCurrentCity }) => {
   const [locationName, setLocationName] = useState(cityName);
 
   const handleChange = e => {
-    console.log(e.target.value);
     setLocationName(e.target.value);
   };
 
