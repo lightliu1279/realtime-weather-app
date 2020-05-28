@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react';
+import styled from '@emotion/styled';
 
-import WeatherIcon from "./WeatherIcon";
+import WeatherIcon from './WeatherIcon';
 
-import { ReactComponent as LoadingIcon } from "./images/loading.svg";
-import { ReactComponent as AirFlowIcon } from "./images/airFlow.svg";
-import { ReactComponent as RainIcon } from "./images/rain.svg";
-import { ReactComponent as RefreshIcon } from "./images/refresh.svg";
-import { ReactComponent as CogIcon } from "./images/cog.svg";
+import { ReactComponent as LoadingIcon } from './images/loading.svg';
+import { ReactComponent as AirFlowIcon } from './images/airFlow.svg';
+import { ReactComponent as RainIcon } from './images/rain.svg';
+import { ReactComponent as RefreshIcon } from './images/refresh.svg';
+import { ReactComponent as CogIcon } from './images/cog.svg';
 
 const WeatherCardWrapper = styled.div`
   position: relative;
@@ -93,7 +93,7 @@ const Refresh = styled.div`
     height: 15px;
     cursor: pointer;
     animation: rotate infinite 1.5s linear;
-    animation-duration: ${({ isLoading }) => (isLoading ? "1.5s" : "0s")};
+    animation-duration: ${({ isLoading }) => (isLoading ? '1.5s' : '0s')};
   }
 
   @keyframes rotate {
@@ -116,52 +116,52 @@ const Cog = styled(CogIcon)`
 `;
 
 const WeatherCard = props => {
-  const { weatherElement, moment, fetchData, setCurrentPage, cityName } = props;
-  const {
-    observationTime,
-    temperature,
-    windSpeed,
-    description,
-    weatherCode,
-    rainPossibility,
-    comfortability,
-    isLoading
-  } = weatherElement;
+    const { weatherElement, moment, fetchData, setCurrentPage, cityName } = props;
+    const {
+        observationTime,
+        temperature,
+        windSpeed,
+        description,
+        weatherCode,
+        rainPossibility,
+        comfortability,
+        isLoading
+    } = weatherElement;
 
-  return (
-    <WeatherCardWrapper>
-      <Cog onClick={() => setCurrentPage("WeatherSetting")} />
-      <Location>{cityName}</Location>
-      <Description>
-        {description} {comfortability}
-      </Description>
-      <CurrentWeather>
-        <Temperature>
-          {Math.round(temperature)} <Celsius>°C</Celsius>
-        </Temperature>
-        <WeatherIcon
-          currentWeatherCode={weatherCode}
-          moment={moment || "day"}
-        />
-      </CurrentWeather>
-      <AirFlow>
-        <AirFlowIcon />
-        {windSpeed} m/h
-      </AirFlow>
-      <Rain>
-        <RainIcon />
-        {Math.round(rainPossibility)}%
-      </Rain>
-      <Refresh isLoading={isLoading}>
+    return (
+        <WeatherCardWrapper>
+            <Cog onClick={() => setCurrentPage('WeatherSetting')} />
+            <Location>{cityName}</Location>
+            <Description>
+                {description} {comfortability}
+            </Description>
+            <CurrentWeather>
+                <Temperature>
+                    {Math.round(temperature)} <Celsius>°C</Celsius>
+                </Temperature>
+                <WeatherIcon
+                    currentWeatherCode={weatherCode}
+                    moment={moment || 'day'}
+                />
+            </CurrentWeather>
+            <AirFlow>
+                <AirFlowIcon />
+                {windSpeed} m/h
+            </AirFlow>
+            <Rain>
+                <RainIcon />
+                {Math.round(rainPossibility)}%
+            </Rain>
+            <Refresh isLoading={isLoading}>
         最後觀測時間：
-        {new Intl.DateTimeFormat("zh-TW", {
-          hour: "numeric",
-          minute: "numeric"
-        }).format(new Date(observationTime.toString().replace(/-/g, "/")))}{" "}
-        {isLoading ? <LoadingIcon /> : <RefreshIcon onClick={fetchData} />}
-      </Refresh>
-    </WeatherCardWrapper>
-  );
+                {new Intl.DateTimeFormat('zh-TW', {
+                    hour: 'numeric',
+                    minute: 'numeric'
+                }).format(new Date(observationTime.toString().replace(/-/g, '/')))}{' '}
+                {isLoading ? <LoadingIcon /> : <RefreshIcon onClick={fetchData} />}
+            </Refresh>
+        </WeatherCardWrapper>
+    );
 };
 
 export default WeatherCard;
